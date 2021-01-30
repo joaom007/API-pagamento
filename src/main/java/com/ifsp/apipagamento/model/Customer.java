@@ -31,6 +31,7 @@ public class Customer implements Serializable{
     private String token;
     private String dateBirth;
 
+    @JsonIgnore
     @OneToMany(mappedBy = "customer")
     private List<Phone> phones = new ArrayList<>();
 
