@@ -42,7 +42,7 @@ public class Purchase implements Serializable{
     public Purchase() {
     }
 
-    public Purchase(Long id, String nameCompany, Instant date, Double total, int installments, Card card, Status status) {
+    public Purchase(Long id, String nameCompany, Instant date, Double total, int installments, Card card) {
         super();
         this.id = id;
         this.nameCompany = nameCompany;
@@ -50,7 +50,6 @@ public class Purchase implements Serializable{
         this.total = total;
         this.installments = installments;
         this.card = card;
-        this.status = status;
     }
 
     public Long getId() {
