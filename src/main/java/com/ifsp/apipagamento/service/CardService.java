@@ -54,7 +54,6 @@ public class CardService {
       } catch (EntityNotFoundException e) {
         throw new ResourceNotFoundException(id);
       }
-      
     }
 
     private void updateData(Card model, Card obj) {
@@ -62,7 +61,6 @@ public class CardService {
       model.setNameInCard(obj.getNameInCard());
       model.setValidate(obj.getValidate());
       model.setSecurityNumber(obj.getSecurityNumber());
-      model.setCustomer(obj.getCustomer());
     }
 
 }
