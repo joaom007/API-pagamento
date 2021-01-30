@@ -19,7 +19,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 @RestController
-@RequestMapping(path = "/api/endereco")
+@RequestMapping(path = "/api/cartao")
 public class CardController {
 
     @Autowired
