@@ -62,5 +62,7 @@ public class PurchaseService {
       model.setTotal(obj.getTotal());
       model.setInstallments(obj.getInstallments());
       model.setStatus(obj.getStatus());
+      model.setCard(obj.getCard());
+
     }
 }
