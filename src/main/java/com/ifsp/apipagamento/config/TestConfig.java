@@ -7,7 +7,6 @@ import com.ifsp.apipagamento.model.Card;
 import com.ifsp.apipagamento.model.Customer;
 import com.ifsp.apipagamento.model.Phone;
 import com.ifsp.apipagamento.model.Purchase;
-import com.ifsp.apipagamento.model.Status;
 import com.ifsp.apipagamento.repository.CardRepository;
 import com.ifsp.apipagamento.repository.CustomerRepository;
 import com.ifsp.apipagamento.repository.PhoneRepository;
@@ -55,19 +54,9 @@ public class TestConfig implements CommandLineRunner{
 
         cardRepository.saveAll(Arrays.asList(cd1, cd2, cd3));
 
-        Purchase pu1 = new Purchase(null, "Amazon", Instant.parse("2021-01-20T19:53:07Z"), 1547.89, 12, cd1);
-        Purchase pu2 = new Purchase(null, "Magazine Luiza", Instant.parse("2019-01-20T19:53:07Z"), 645.89, 5, cd2);
-        Purchase pu3 = new Purchase(null, "Detran", Instant.parse("2020-12-20T19:53:07Z"), 863.20, 3, cd1);
-
-        purchaseRepository.saveAll(Arrays.asList(pu1, pu2, pu3));
-
-        Status s1 = new Status(null, "pago", Instant.parse("2021-01-20T19:53:07Z"), pu1);
-        Status s2 = new Status(null, "cancelado", Instant.parse("2021-01-20T19:53:07Z"), pu2);
-        Status s3 = new Status(null, "extornado", Instant.parse("2021-01-20T19:53:07Z"), pu3);
-        
-        pu1.setStatus(s1);
-        pu2.setStatus(s2);
-        pu3.setStatus(s3);
+        Purchase pu1 = new Purchase(null, "Amazon", Instant.parse("2021-01-20T19:53:07Z"), 1547.89, 12, "pago", cd1);
+        Purchase pu2 = new Purchase(null, "Magazine Luiza", Instant.parse("2019-01-20T19:53:07Z"), 645.89, 5, "cancelado", cd2);
+        Purchase pu3 = new Purchase(null, "Detran", Instant.parse("2020-12-20T19:53:07Z"), 863.20, 3, "estornado", cd1);
 
         purchaseRepository.saveAll(Arrays.asList(pu1, pu2, pu3));
              
