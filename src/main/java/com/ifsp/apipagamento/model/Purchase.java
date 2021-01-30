@@ -4,14 +4,12 @@ import java.io.Serializable;
 import java.time.Instant;
 import java.util.Objects;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
@@ -32,23 +30,24 @@ public class Purchase implements Serializable{
     private Double total;  
     private int installments;
 
+    private String status;
+
     @ManyToOne
     @JoinColumn(name = "card_id")
     private Card card;
 
-    @OneToOne(mappedBy = "purchase", cascade = CascadeType.ALL)
-    private Status status;
-
     public Purchase() {
     }
 
-    public Purchase(Long id, String nameCompany, Instant date, Double total, int installments, Card card) {
+
+    public Purchase(Long id, String nameCompany, Instant date, Double total, int installments, String status, Card card) {
         super();
         this.id = id;
         this.nameCompany = nameCompany;
         this.date = date;
         this.total = total;
         this.installments = installments;
+        this.status = status;
         this.card = card;
     }
 
@@ -92,20 +91,20 @@ public class Purchase implements Serializable{
         this.installments = installments;
     }
 
+    public String getStatus() {
+        return this.status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
     public Card getCard() {
         return this.card;
     }
 
     public void setCard(Card card) {
         this.card = card;
-    }
-
-    public Status getStatus() {
-        return this.status;
-    }
-
-    public void setStatus(Status status) {
-        this.status = status;
     }
 
     @Override
@@ -124,5 +123,4 @@ public class Purchase implements Serializable{
         return Objects.hashCode(id);
     }
 
- 
 }
