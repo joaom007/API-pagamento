@@ -5,8 +5,8 @@ import java.util.Optional;
 
 import javax.persistence.EntityNotFoundException;
 
-import com.ifsp.apipagamento.model.Phone;
-import com.ifsp.apipagamento.repository.PhoneRepository;
+import com.ifsp.apipagamento.model.Card;
+import com.ifsp.apipagamento.repository.CardRepository;
 import com.ifsp.apipagamento.service.exception.DataBaseException;
 import com.ifsp.apipagamento.service.exception.ResourceNotFoundException;
 
@@ -16,21 +16,21 @@ import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.stereotype.Service;
 
 @Service
-public class PhoneService {
+public class CardService {
 
     @Autowired
-    private PhoneRepository repository;
+    private CardRepository repository;
 
-    public List<Phone> selectPhone() {
+    public List<Card> selectCard() {
         return repository.findAll();
     }
     
-    public Phone selectPhoneById(Long id) {
-      Optional<Phone> obj = repository.findById(id);
+    public Card selectCardById(Long id) {
+      Optional<Card> obj = repository.findById(id);
       return obj.orElseThrow(() -> new ResourceNotFoundException(id));
     }
 
-    public Phone insert(Phone obj) {
+    public Card insert(Card obj) {
       return repository.save(obj);
     }
 
@@ -46,9 +46,9 @@ public class PhoneService {
       }
     }
 
-    public Phone update(Long id, Phone obj) {
+    public Card update(Long id, Card obj) {
       try {
-        Phone model = repository.getOne(id);
+        Card model = repository.getOne(id);
         updateData(model, obj);
         return repository.save(model);
       } catch (EntityNotFoundException e) {
@@ -57,10 +57,12 @@ public class PhoneService {
       
     }
 
-    private void updateData(Phone model, Phone obj) {
-      model.setPhone(obj.getPhone());
+    private void updateData(Card model, Card obj) {
+      model.setNumber(obj.getNumber());
+      model.setNameInCard(obj.getNameInCard());
+      model.setValidate(obj.getValidate());
+      model.setSecurityNumber(obj.getSecurityNumber());
       model.setCustomer(obj.getCustomer());
     }
 
 }
-
