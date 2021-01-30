@@ -54,12 +54,10 @@ public class PhoneService {
       } catch (EntityNotFoundException e) {
         throw new ResourceNotFoundException(id);
       }
-      
     }
 
     private void updateData(Phone model, Phone obj) {
       model.setPhone(obj.getPhone());
-      model.setCustomer(obj.getCustomer());
     }
 
 }
