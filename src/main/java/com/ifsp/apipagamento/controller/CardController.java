@@ -47,6 +47,14 @@ public class CardController {
         return ResponseEntity.created(uri).body(obj);
     }
 
+    //Select by id customer
+    //Return cod 201 http
+    @GetMapping(value = "/cliente/{id}")
+    public ResponseEntity<List<Card>> selectCardByCustomer(@PathVariable Long id) {
+        List<Card> lst = service.selectCardByCustomer(id);
+        return ResponseEntity.ok().body(lst);
+    }
+
     //Delete by id
     //Return cod 204 http
     @DeleteMapping(value = "/{id}")

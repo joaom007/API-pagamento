@@ -30,6 +30,10 @@ public class CardService {
       return obj.orElseThrow(() -> new ResourceNotFoundException(id));
     }
 
+    public List<Card> selectCardByCustomer(Long id) {
+      return repository.selectCardByCustomer(id); 
+    } 
+
     public Card insert(Card obj) {
       return repository.save(obj);
     }

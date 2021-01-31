@@ -41,7 +41,7 @@ public class PhoneController {
     //Select by id customer
     //Return cod 201 http
     @GetMapping(value = "/cliente/{id}")
-    public ResponseEntity<List<Phone>> selectPhonebyCustomer(@PathVariable Long id) {
+    public ResponseEntity<List<Phone>> selectPhoneByCustomer(@PathVariable Long id) {
         List<Phone> lst = service.selectPhoneByCustomer(id);
         return ResponseEntity.ok().body(lst);
     }
