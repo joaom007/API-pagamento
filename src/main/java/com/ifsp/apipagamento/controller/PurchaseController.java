@@ -38,6 +38,14 @@ public class PurchaseController {
         return ResponseEntity.ok().body(obj);
     }
 
+    //Select by id customer
+    //Return cod 201 http
+    @GetMapping(value = "/cliente/{id}")
+    public ResponseEntity<List<Purchase>> selectPurchaseByCustomer(@PathVariable Long id) {
+        List<Purchase> lst = service.selectPurchaseByCustomer(id);
+        return ResponseEntity.ok().body(lst);
+    }
+
     //Select by id
     //Return cod 201 http
     @PostMapping

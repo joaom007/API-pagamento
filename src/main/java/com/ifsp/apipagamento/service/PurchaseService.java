@@ -30,6 +30,10 @@ public class PurchaseService {
       return obj.orElseThrow(() -> new ResourceNotFoundException(id));
     }
 
+    public List<Purchase> selectPurchaseByCustomer(Long id) {
+      return repository.selectPurchaseByCustomer(id); 
+    } 
+
     public Purchase insert(Purchase obj) {
       return repository.save(obj);
     }

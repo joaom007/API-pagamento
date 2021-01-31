@@ -38,6 +38,14 @@ public class CardController {
         return ResponseEntity.ok().body(obj);
     }
 
+    //Select by id customer
+    //Return cod 201 http
+    @GetMapping(value = "/cliente/{id}")
+    public ResponseEntity<List<Card>> selectCardByCustomer(@PathVariable Long id) {
+        List<Card> lst = service.selectCardByCustomer(id);
+        return ResponseEntity.ok().body(lst);
+    }
+
     //Select by id
     //Return cod 201 http
     @PostMapping
@@ -45,14 +53,6 @@ public class CardController {
         obj = service.insert(obj);
         URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(obj.getId()).toUri();
         return ResponseEntity.created(uri).body(obj);
-    }
-
-    //Select by id customer
-    //Return cod 201 http
-    @GetMapping(value = "/cliente/{id}")
-    public ResponseEntity<List<Card>> selectCardByCustomer(@PathVariable Long id) {
-        List<Card> lst = service.selectCardByCustomer(id);
-        return ResponseEntity.ok().body(lst);
     }
 
     //Delete by id
