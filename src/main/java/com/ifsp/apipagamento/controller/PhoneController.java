@@ -38,6 +38,14 @@ public class PhoneController {
         return ResponseEntity.ok().body(obj);
     }
 
+    //Select by id customer
+    //Return cod 201 http
+    @GetMapping(value = "/cliente/{id}")
+    public ResponseEntity<List<Phone>> selectPhonebyCustomer(@PathVariable Long id) {
+        List<Phone> lst = service.selectPhoneByCustomer(id);
+        return ResponseEntity.ok().body(lst);
+    }
+
     //Select by id
     //Return cod 201 http
     @PostMapping

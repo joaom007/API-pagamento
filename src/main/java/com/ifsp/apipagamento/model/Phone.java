@@ -27,6 +27,7 @@ public class Phone {
     }
 
     public Phone(Long id, String phone, Customer customer) {
+        super();
         this.id = id;
         this.phone = phone;
         this.customer = customer;
