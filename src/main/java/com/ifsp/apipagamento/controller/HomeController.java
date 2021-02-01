@@ -5,11 +5,11 @@ import org.springframework.web.bind.annotation.RestController;
 
 
 @RestController
-public class HelloController {
+public class HomeController {
 
-    @GetMapping(value="/")
-    public String getMethodName() {
-        return "IFSP API 2 - Pagamentos";
+    @GetMapping(value = "/index")
+    public String index() {
+        return "index";
     }
     
     
