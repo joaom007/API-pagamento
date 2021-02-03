@@ -48,9 +48,9 @@ public class PurchaseController {
 
     //Select by id
     //Return cod 201 http
-    @PostMapping
-    public ResponseEntity<Purchase> insert(@RequestBody Purchase obj) {
-        obj = service.insert(obj);
+    @PostMapping(value = "/{nameCompany}")
+    public ResponseEntity<Purchase> insert(@RequestBody Purchase obj, @PathVariable String nameCompany) {
+        obj = service.insert(obj, nameCompany);
         URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(obj.getId()).toUri();
         return ResponseEntity.created(uri).body(obj);
     }

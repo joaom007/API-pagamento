@@ -1,7 +1,9 @@
 package com.ifsp.apipagamento.service;
 
+import java.time.Instant;
 import java.util.List;
 import java.util.Optional;
+import java.util.Random;
 
 import javax.persistence.EntityNotFoundException;
 
@@ -34,9 +36,15 @@ public class PurchaseService {
       return repository.selectPurchaseByCustomer(id); 
     } 
 
-    public Purchase insert(Purchase obj) {
+    public Purchase insert(Purchase obj, String nameCompany) {
+      obj.setNameCompany(nameCompany);
+      obj.setDate(Instant.now());
+      obj.setStatus("Pago");
+      Random r = new Random();
+      obj.setInstallments(r.nextInt(12));
       return repository.save(obj);
     }
+
 
     public void delete(Long id) {
       try {
